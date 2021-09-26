@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xml:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Modificar Datos De Un Persona</title>
+</head>
+<body>
+
+	<header th:replace="layout/plantilla::header"></header>
+	<h1>Datos de la Persona</h1>
+	<a th:href="@{/}">Regresar</a>
+	<br>
+	<form th:action="@{/guardar}" method="post" th:Object="${persona}">
+		<input type="hidden" name="id_persona" th:field="*{id_persona}"/>
+		<label for="nombre">Nombre</label>
+		<input type="text" name="name" th:field="*{name}"/>
+		<span th:if="${#fields.hasErrors('name')}" th:erros="*{name}">Error Nombre</span>
+		<br/>
+		<label for="lastName">Apellido</label>
+		<input type="text" name="lastname" th:field="*{lastname}"/>
+				<span th:if="${#fields.hasErrors('lastname')}" th:erros="*{lastname}">Error Apellido</span>
+		
+		<br/>
+		<label for="email">Email</label>
+		<input type="text" name="email" th:field="*{email}"/>
+				<span th:if="${#fields.hasErrors('email')}" th:erros="*{email}">Error Email</span>
+		
+		<br/>
+		<label for="telefono">Telefono</label>
+		<input type="text" name="telefono" th:field="*{telefono}"/>
+		<br/>
+		<input type="submit" name="guardar" value="Guardar">
+	</form>	
+	<footer th:replace="layout/plantilla::footer">Global Mentoring</footer>
+</body>
+</html>
